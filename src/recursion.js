@@ -14,27 +14,31 @@ var factorial = function(n) {
     return 1;
   }
   return n * factorial(n - 1);
-}};
+};
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
-  if(array.length === 0){
+  var array1 = array.slice();
+  if(array1.length === 0){
     return 0
   }
-  return array.pop() + sum(array);
+  return array1.pop() + sum(array1);
 };
 
-  }
-};
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
-  //if array length = 0 return 0
-  //create variable = pop last element off array
-  // if variable above is an array
-    //
+  var array1 = array.slice();
+  if(array1.length === 0){
+    return 0;
+  }
+  if(Number.isInteger(array1.pop())) {
+    return array1.pop() + arraySum(array1);
+  } else {
+    return sum(array1.pop()) + arraySum(array1)
+  }
 
 };
 
